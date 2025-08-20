@@ -1,0 +1,27 @@
+{
+  "name": "@time-travel/react",
+  "version": "1.0.0",
+  "description": "React components and hooks for react-time-travel",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c ../../rollup.config.react.js",
+    "dev": "rollup -c ../../rollup.config.react.js --watch",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@time-travel/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "vitest": "^1.0.4"
+  }
+}

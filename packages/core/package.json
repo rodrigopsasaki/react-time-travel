@@ -1,0 +1,19 @@
+{
+  "name": "@time-travel/core",
+  "version": "1.0.0",
+  "description": "Core time manipulation utilities for react-time-travel",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c ../../rollup.config.core.js",
+    "dev": "rollup -c ../../rollup.config.core.js --watch",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vitest": "^1.0.4"
+  }
+}

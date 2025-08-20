@@ -1,0 +1,100 @@
+{
+  "name": "@rodrigopsasaki/react-time-travel",
+  "version": "1.0.0",
+  "description": "A powerful React library for controlling time in applications during testing",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "time",
+    "testing",
+    "date",
+    "mock",
+    "development",
+    "time-travel",
+    "clock"
+  ],
+  "author": "React Time Travel Contributors",
+  "license": "MIT",
+  "homepage": "https://github.com/react-time-travel/react-time-travel#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-time-travel/react-time-travel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/react-time-travel/react-time-travel/issues"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:clean && npm run build:core && npm run build:react && npm run build:copy-types",
+    "build:clean": "rm -rf dist",
+    "build:core": "rollup -c rollup.config.core.js",
+    "build:react": "rollup -c rollup.config.react.js",
+    "build:copy-types": "cp -r packages/core/dist/types/* dist/ && cp -r packages/react/dist/types/* dist/",
+    "dev": "npm run dev:core & npm run dev:react",
+    "dev:core": "rollup -c rollup.config.core.js --watch",
+    "dev:react": "rollup -c rollup.config.react.js --watch",
+    "dev:example": "cd example && npm run dev",
+    "type-check": "npm run type-check:core && npm run type-check:react",
+    "type-check:core": "cd packages/core && tsc --noEmit",
+    "type-check:react": "cd packages/react && tsc --noEmit",
+    "lint": "eslint packages/**/*.{ts,tsx} --fix",
+    "test": "npm run test:core && npm run test:react",
+    "test:core": "cd packages/core && vitest run",
+    "test:react": "cd packages/react && vitest run",
+    "test:watch": "cd packages/core && vitest & cd packages/react && vitest",
+    "example:install": "cd example && npm install",
+    "example:dev": "cd example && npm run dev",
+    "example:build": "cd example && npm run build",
+    "prepublishOnly": "echo 'Distribution files ready'"
+  },
+  "workspaces": [
+    "packages/*",
+    "example"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "rollup": "^4.9.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./core": {
+      "import": "./dist/core.esm.js",
+      "require": "./dist/core.js",
+      "types": "./dist/core.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react.esm.js",
+      "require": "./dist/react.js",
+      "types": "./dist/react.d.ts"
+    }
+  }
+}
